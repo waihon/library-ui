@@ -54,3 +54,13 @@ Specify what it takes to deploy your app.
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+
+## Terminal Commands
+
+### 2. Creating an Ember Project
+
+* `ember new library-ui`
+* `cd library-ui`
+* `ember install embercasts-library-styles`
+* `emebr serve`
+* `ember g ember-cli-sass`
