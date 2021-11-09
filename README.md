@@ -64,3 +64,7 @@ Specify what it takes to deploy your app.
 * `ember install embercasts-library-styles`
 * `emebr serve`
 * `ember g ember-cli-sass`
+
+### 5. Ember Handlebars Templates
+
+* `ember generate route index`
