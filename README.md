@@ -68,3 +68,7 @@ Specify what it takes to deploy your app.
 ### 5. Ember Handlebars Templates
 
 * `ember generate route index`
+
+### 6. Ember Route Basics
+
+* `ember g route author`
