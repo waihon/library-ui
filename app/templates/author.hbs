@@ -1,2 +1,23 @@
 {{page-title "Author"}}
-{{outlet}}
+
+<div class="panel-heading">
+  <div class="search">
+    <input type="text" placeholder="Search by Author Name">
+  </div>
+
+  <a href>
+    <div class="sr-only">Add New Author</div>
+  </a>
+</div>
+
+<div class="panel-content">
+  <h3 class="panel-title">Authors</h3>
+
+  <ul class="collection">
+    <li>
+      <a href>
+        {{@model.first}} {{@model.last}}
+      </a>
+    </li>
+  </ul>
+</div>
