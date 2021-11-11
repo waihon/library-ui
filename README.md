@@ -72,3 +72,7 @@ Specify what it takes to deploy your app.
 ### 6. Ember Route Basics
 
 * `ember g route author`
+
+### 9. Presentation Components
+
+* `ember g component author-list-item -gc`
