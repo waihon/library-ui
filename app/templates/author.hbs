@@ -16,9 +16,7 @@
   <ul class="collection">
     {{#each @model.data as |author|}}
       <li>
-        <a href>
-          {{author.attributes.first}} {{author.attributes.last}}
-        </a>
+        <AuthorListItem @first={{author.attributes.first}} @last={{author.attributes.last}} />
       </li>
     {{/each}}
   </ul>
