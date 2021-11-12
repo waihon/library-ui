@@ -81,3 +81,7 @@ Specify what it takes to deploy your app.
 
 * `ember g model author first last`
 * `ember g adapter application`
+
+### 11. Route Paths
+
+* `ember g route author/detail`
