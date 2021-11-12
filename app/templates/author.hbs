@@ -14,9 +14,9 @@
   <h3 class="panel-title">Authors</h3>
 
   <ul class="collection">
-    {{#each @model.data as |author|}}
+    {{#each @model as |author|}}
       <li>
-        <AuthorListItem @first={{author.attributes.first}} @last={{author.attributes.last}} />
+        <AuthorListItem @first={{author.first}} @last={{author.last}} />
       </li>
     {{/each}}
   </ul>
