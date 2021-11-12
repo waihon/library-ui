@@ -76,3 +76,8 @@ Specify what it takes to deploy your app.
 ### 9. Presentation Components
 
 * `ember g component author-list-item -gc`
+
+### 10. Ember Data Find All
+
+* `ember g model author first last`
+* `ember g adapter application`
