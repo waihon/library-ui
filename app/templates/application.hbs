@@ -1,14 +1,14 @@
 <div class="app">
   <nav class="main-nav">
     <h1 class="logo">
-      <a href>
+      <LinkTo @route="index">
         <img src="/logo.svg" alt="Ember Library">
         <span class="sr-only">Ember Library</span>
-      </a>
+      </LinkTo>
     </h1>
 
     <ul>
-      <li><a href>Authors</a></li>
+      <li><LinkTo @route="author">Authors</LinkTo></li>
       <li><a href>Books</a></li>
     </ul>
   </nav>
