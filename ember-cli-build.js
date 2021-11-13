@@ -5,6 +5,12 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     // Add options here
+    minifyCSS: {
+      options: { processImport: true }
+    },
+    sassOptions: {
+      extension: 'scss'
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
@@ -19,6 +25,18 @@ module.exports = function (defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
+
+  // All style assets added this way will be concatenated and output
+  // as /assets/vendor.css
+  app.import('vendor/css/all.css');
+
+  // webfonts cannot be in the same assests directory as all.css
+  // because in that CSS file, webfonts is referenced as ../webfonts.
+  app.import('vendor/webfonts/fa-solid-900.eot');
+  app.import('vendor/webfonts/fa-solid-900.svg');
+  app.import('vendor/webfonts/fa-solid-900.ttf');
+  app.import('vendor/webfonts/fa-solid-900.woff');
+  app.import('vendor/webfonts/fa-solid-900.woff2');
 
   return app.toTree();
 };

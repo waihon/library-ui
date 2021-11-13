@@ -1,0 +1,21 @@
+// Override embercasts-library which uses font-family FontAwesome'
+// with 'Font Awesome 5 Free'.
+// elements/button.scss
+.btn-back {
+  &::before {
+    font-family: "Font Awesome 5 Free";
+    content: '\f30a';
+    font-weight: 900;
+  }
+}
+
+// layouts/panel.scss
+.panel-heading {
+  .search {
+    &::after {
+      font-family: "Font Awesome 5 Free";
+      content: '\f002';
+      font-weight: 900;
+    }
+  }
+}
