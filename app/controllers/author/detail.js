@@ -3,8 +3,8 @@ import { action } from '@ember/object';
 
 export default class AuthorDetailController extends Controller {
   @action
-  deleteAuthor() {
-    console.log(arguments);
+  deleteAuthor(author) {
+    console.log(author);
     window.alert('Delete Author');
   }
 }
