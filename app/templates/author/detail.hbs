@@ -15,7 +15,7 @@
         <div class="actions">
           <button
             class="btn-recessed"
-            onclick={{action "deleteAuthor" @model}}
+            {{on "click" (fn this.deleteAuthor @model)}}
           >
             delete
           </button>
