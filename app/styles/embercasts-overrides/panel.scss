@@ -1,0 +1,71 @@
+.panel-heading {
+  position: relative;
+  margin: 0;
+  padding: 0 $m-gutter * 2;
+  background: $c-bg;
+  font-size: 1rem;
+  font-weight: 400;
+
+  .search {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+
+    &::after {
+      display: flex;
+      align-items: center;
+      padding: 0 0.5rem;
+      border-bottom: 0.2rem $c-border-search solid;
+      opacity: 0.6;
+      color: $c-primary;
+
+      // Override embercasts-library which uses font-family FontAwesome
+      // with 'Font Awesome 5 Free'.
+      font-family: "Font Awesome 5 Free";
+      content: '\f002';
+      font-weight: 900;
+    }
+
+    input {
+      display: block;
+      flex-grow: 1;
+      padding: ($m-gutter * 1.2) 0;
+      border: 0;
+      border-bottom: 0.2rem $c-border-search solid;
+      outline: none;
+
+      background: 0;
+      color: $c-primary;
+      font: inherit;
+
+      &:focus {
+        border-bottom-color: $c-primary;
+      }
+
+      &::placeholder {
+        color: $c-primary;
+        opacity: 0.6;
+      }
+    }
+  }
+
+  .btn-new {
+    position: absolute;
+    top: 100%;
+    right: $m-gutter * 3;
+    transform: translateY(-50%);
+  }
+}
+
+.panel-content {
+  flex-grow: 1;
+  padding: $m-gutter * 2;
+  overflow-y: scroll;
+}
+
+.panel-title {
+  margin-top: 0;
+  border-bottom: 2px $c-border-search solid;
+
+  font-size: 2rem;
+}

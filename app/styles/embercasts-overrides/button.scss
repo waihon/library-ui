@@ -1,0 +1,111 @@
+.btn {
+  display: inline-block;
+  padding: ($m-gutter * 0.8) $m-gutter;
+  border: 0;
+  border-radius: $m-border-radius;
+
+  background: $c-secondary;
+  color: $c-white;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-new,
+.btn-back {
+  @extend .btn;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+
+  border-radius: 50%;
+  background: $c-secondary;
+  font-size: 2rem;
+}
+
+.btn-new {
+  &::before {
+    content: '+';
+  }
+}
+
+.btn-back {
+  font-size: 1.8rem;
+
+  &::before {
+    // Override embercasts-library which uses font-family FontAwesome
+    // with 'Font Awesome 5 Free'.
+    font-family: "Font Awesome 5 Free";
+    content: '\f30a';
+    font-weight: 900;
+  }
+}
+
+.btn-pop {
+  @extend .btn;
+
+  background: $c-primary-pop;
+}
+
+.btn-recessed {
+  @extend .btn;
+
+  background: $c-primary-recessed;
+}
+
+.btn-secondary {
+  @extend .btn;
+
+  background: $c-secondary;
+}
+
+.btn-reset {
+  @extend .btn;
+
+  background: $c-border;
+  color: $c-text;
+}
+
+.btn-clear {
+  @extend .btn;
+
+  background: none;
+  color: $c-secondary;
+
+  &:hover {
+    background: $c-bg-hover;
+  }
+}
+
+.btn-submit {
+  @extend .btn;
+
+  background: $c-secondary;
+}
+
+.btn-trigger {
+  @extend .btn;
+
+  width: 100%;
+  border: 1px $c-border solid;
+  background: $c-bg;
+  color: $c-text;
+}
+
+.btn-add {
+  @extend .btn;
+
+  &::before {
+    content: '+';
+    margin-right: $m-gutter / 4;
+  }
+}
+
+.actions {
+  > * + * {
+    margin-left: $m-gutter / 2;
+  }
+}
