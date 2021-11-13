@@ -6,10 +6,10 @@ module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     // Add options here
     minifyCSS: {
-      options: { processImport: true }
+      options: { processImport: true },
     },
     sassOptions: {
-      extension: 'scss'
+      extension: 'scss',
     },
   });
 
