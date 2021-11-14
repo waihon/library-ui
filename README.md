@@ -89,3 +89,8 @@ Specify what it takes to deploy your app.
 ### 16. Actions Three Ways
 
 * `ember g controller author/detail`
+
+### 18. Inputs
+
+* `ember g route author/create`
+* `ember g controller author/create`
