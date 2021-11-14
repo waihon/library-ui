@@ -1,1 +1,23 @@
-{{yield}}
+<form onsubmit={{action "submitChanges"}}>
+  <div class="field">
+    <label>First Name:</label>
+    <Input
+      @type="text"
+      placeholder="First Name"
+      @value={{this.first}}
+    />
+  </div>
+
+  <div class="field">
+    <label>Last Name:</label>
+    <Input
+      @type="text"
+      placeholder="Last Name"
+      @value={{this.last}}
+    />
+  </div>
+
+  <div class="form-footer">
+    <button type="submit" class="btn-submit">save</button>
+  </div>
+</form>
