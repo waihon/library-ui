@@ -99,3 +99,7 @@ Specify what it takes to deploy your app.
 
 * `ember g route author/edit`
 * `ember g controller author/edit`
+
+### 22. Author Edit Form
+
+* `ember g component author-form -gc`
