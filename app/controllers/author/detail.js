@@ -12,8 +12,9 @@ export default class AuthorDetailController extends Controller {
     author.deleteRecord();
     // Send a network request to the server to save the changes, i.e. delete
     // an author in this case.
-    author.save();
-
-    this.router.transitionTo('author.index');
+    author.save().then(() => {
+      // Wait for the saving to be completed first before transitioning.
+      this.router.transitionTo('author.index');
+    });
   }
 }
