@@ -94,3 +94,8 @@ Specify what it takes to deploy your app.
 
 * `ember g route author/create`
 * `ember g controller author/create`
+
+### 21. Edit Author Template
+
+* `ember g route author/edit`
+* `ember g controller author/edit`
