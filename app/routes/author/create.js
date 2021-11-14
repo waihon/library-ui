@@ -6,6 +6,6 @@ export default class AuthorCreateRoute extends Route {
     return {
       first: '',
       last: '',
-    }
+    };
   }
 }

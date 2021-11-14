@@ -12,8 +12,10 @@ export default class AuthorCreateController extends Controller {
     event.preventDefault();
 
     // Create an author locally
-    this.store.createRecord('author', this.model);
+    let author = this.store.createRecord('author', this.model);
 
-    this.router.transitionTo('author');
+    author.save().then(() => {
+      this.router.transitionTo('author');
+    });
   }
 }
