@@ -13,9 +13,9 @@
     </div>
 
     <div class="slide-out-content">
-      <form>
+      <form onsubmit={{action "saveAuthor"}}>
         <div class="field">
-          <label>First Name: {{@model.first}}</label>
+          <label>First Name:</label>
           <Input
             @type="text"
             @placeholder="First Name"
@@ -24,12 +24,16 @@
         </div>
 
         <div class="field">
-          <label>Last Name: {{@model.last}}</label>
+          <label>Last Name:</label>
           <Input
             @type="text"
             @placeholder="Last Name"
             @value={{@model.last}}
           />
+        </div>
+
+        <div class="form-footer">
+          <button type="submit" class="btn-submit">save</button>
         </div>
       </form>
     </div>
