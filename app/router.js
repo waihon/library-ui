@@ -10,6 +10,8 @@ Router.map(function () {
   this.route('author', { path: '/authors' }, function () {
     this.route('detail', { path: '/:id' });
     this.route('create');
-    this.route('edit');
+    // The full path has to be unique. SInce '/:id' has been used by
+    // the detail route, we add '/edit' to '/:id' to make it unique.
+    this.route('edit', { path: '/:id/edit' });
   });
 });
