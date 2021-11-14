@@ -7,12 +7,11 @@ export default class AuthorDetailController extends Controller {
 
   @action
   deleteAuthor(author) {
-    // Schedule a model to be deleted, i.e. it doesn't make a network request
-    // to the server.
-    author.deleteRecord();
-    // Send a network request to the server to save the changes, i.e. delete
-    // an author in this case.
-    author.save().then(() => {
+    // Instead of separately calling deleteRecord() and save(), we can use
+    // destroyRecord() and delete a record and save it right away.
+    // Similar to save(), destroyRecord() also returns a promise. So, we
+    // can wait for it to complete first before doing next step.
+    author.destroyRecord().then(() => {
       // Wait for the saving to be completed first before transitioning.
       this.router.transitionTo('author.index');
     });
