@@ -6,6 +6,13 @@ export default class AuthorCreateController extends Controller {
   @tracked first = '';
   @tracked last = '';
 
+  reset() {
+    this.setProperties({
+      first: '',
+      last: '',
+    });
+  }
+
   @action
   changeFirst(value) {
     // Use value instead of event as the function's argument to make

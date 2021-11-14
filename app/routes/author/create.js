@@ -4,9 +4,6 @@ export default class AuthorCreateRoute extends Route {
   resetController(controller) {
     this._super(...arguments);
 
-    controller.setProperties({
-      first: '',
-      last: '',
-    });
+    controller.reset();
   }
 }
