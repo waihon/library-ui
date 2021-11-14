@@ -13,6 +13,10 @@
         <h3>{{@model.last}}, {{@model.first}}</h3>
 
         <div class="actions">
+          <LinkTo @route="author.edit" @model={{@model.id}} class="btn-pop">
+            edit
+          </LinkTo>
+
           <button
             class="btn-recessed" type="button" {{on "click" (fn this.deleteAuthor @model)}}
           >
