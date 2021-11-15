@@ -2,7 +2,9 @@ import Route from '@ember/routing/route';
 
 export default class AuthorRoute extends Route {
   queryParams = {
-    search: true,
+    search: {
+      refreshModel: true,
+    },
   };
 
   model({ search }) {
@@ -12,7 +14,7 @@ export default class AuthorRoute extends Route {
       return this.store.query('author', {
         filter: {
           query: search,
-        }
+        },
       });
     }
 
