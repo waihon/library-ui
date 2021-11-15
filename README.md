@@ -103,3 +103,7 @@ Specify what it takes to deploy your app.
 ### 22. Author Edit Form
 
 * `ember g component author-form -gc`
+
+### 24. Route Query Params
+
+* `ember g controller author`
