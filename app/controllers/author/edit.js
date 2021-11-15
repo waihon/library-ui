@@ -11,6 +11,6 @@ export default class AuthorEditController extends Controller {
 
     this.model.save().then(() => {
       this.router.transitionTo('author');
-    })
+    });
   }
 }

@@ -1,18 +1,20 @@
-<form onsubmit={{action "submitChanges"}}>
+<form {{on "submit" this.submitChanges}}>
   <div class="field">
-    <label>First Name:</label>
+    <label for="first-name">First Name:</label>
     <Input
-      @type="text"
+      id="first-name"
       placeholder="First Name"
+      @type="text"
       @value={{this.first}}
     />
   </div>
 
   <div class="field">
-    <label>Last Name:</label>
+    <label for="last-name">Last Name:</label>
     <Input
-      @type="text"
+      id="last-name"
       placeholder="Last Name"
+      @type="text"
       @value={{this.last}}
     />
   </div>

@@ -2,7 +2,13 @@
 
 <div class="panel-heading">
   <div class="search">
-    <Input @type="text" placeholder="Search by Author Name" @value={{this.search}} />
+    <label for="search-by-author" class="sr-only">Search by Author Name</label>
+    <Input
+      id="search-by-author"
+      placeholder="Search by Author Name"
+      @type="text"
+      @value={{this.search}}
+    />
   </div>
 
   <LinkTo @route="author.create" class="btn-new">
