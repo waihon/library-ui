@@ -19,6 +19,7 @@
           <Input
             id="first-name"
             placeholder="First Name"
+            data-test-lib="new-author-first-name"
             @type="text"
             @value={{@model.first}}
           />
@@ -29,13 +30,20 @@
           <Input
             id="last-name"
             placeholder="Last Name"
+            data-test-lib="new-author-last-name"
             @type="text"
             @value={{@model.last}}
           />
         </div>
 
         <div class="form-footer">
-          <button type="submit" class="btn-submit">save</button>
+          <button
+            type="submit"
+            class="btn-submit"
+            data-test-lib="save-author-button"
+          >
+            save
+          </button>
         </div>
       </form>
     </div>
