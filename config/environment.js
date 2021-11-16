@@ -29,6 +29,10 @@ module.exports = function (environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV['ember-cli-mirage'] = {
+      enabled: false,
+    };
+    ENV.apiHost = 'http://localhost:3000';
   }
 
   if (environment === 'test') {
@@ -41,10 +45,15 @@ module.exports = function (environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
+
+    ENV['ember-cli-mirage'] = {
+      enabled: true,
+    };
   }
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
+    ENV.apiHost = 'https://mighty-refuge-77649.herokuapp.com';
   }
 
   return ENV;
