@@ -2,6 +2,7 @@ import { module, test } from 'qunit';
 import { visit, currentURL, click, fillIn } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { setupMirage } from 'ember-cli-mirage/test-support';
+import { createAuthor } from 'library-ui/tests/helpers/custom-helpers';
 
 module('Acceptance | authors', function (hooks) {
   setupApplicationTest(hooks);
@@ -37,10 +38,7 @@ module('Acceptance | authors', function (hooks) {
     this.server.create('author', { first: 'Stephen', last: 'King' });
 
     await visit('/authors');
-    await click('[data-test-lib="new-author-button"]');
-    await fillIn('[data-test-lib="new-author-first-name"]', 'J.K.');
-    await fillIn('[data-test-lib="new-author-last-name"]', 'Rowling');
-    await click('[data-test-lib="save-author-button"]');
+    await createAuthor('J.K.', 'Rowling');
 
     assert
       .dom('[data-test-lib="author-link"]')
