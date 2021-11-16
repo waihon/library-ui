@@ -107,3 +107,10 @@ Specify what it takes to deploy your app.
 ### 24. Route Query Params
 
 * `ember g controller author`
+
+### 24. Testing
+
+* `ember install ember-cli-mirage`
+* `ember install ember-test-selectors`
+* `ember g mirage-model author`
+* `ember g acceptance-test authors`
