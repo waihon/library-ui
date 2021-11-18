@@ -16,18 +16,18 @@ module('Acceptance | authors', function (hooks) {
     assert.equal(currentURL(), '/authors');
 
     assert
-      .dom('[data-test-lib="author-link"]')
+      .dom('[data-test-author-link]')
       .exists({ count: 2 }, 'All author links are rendered');
 
     assert
-      .dom('[data-test-lib="author-list-item"]:first-child')
+      .dom('[data-test-author-list-item]:first-child')
       .hasText(
         'King, Stephen',
         'The first author list item contains the author name'
       );
 
     assert
-      .dom('[data-test-lib="author-list-item"]:last-child')
+      .dom('[data-test-author-list-item]:last-child')
       .hasText(
         'Rowling, J.K.',
         'The other author list item contains the author name'
@@ -41,11 +41,11 @@ module('Acceptance | authors', function (hooks) {
     await createAuthor('J.K.', 'Rowling');
 
     assert
-      .dom('[data-test-lib="author-link"]')
+      .dom('[data-test-author-link]')
       .exists({ count: 2 }, 'A new author link is rendered');
 
     assert
-      .dom('[data-test-lib="author-list-item"]:last-child')
+      .dom('[data-test-author-list-item]:last-child')
       .hasText('Rowling, J.K.', 'The new author is rendered as the last item');
   });
 });
