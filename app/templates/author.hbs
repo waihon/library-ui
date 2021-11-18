@@ -11,7 +11,7 @@
     />
   </div>
 
-  <LinkTo @route="author.create" class="btn-new" data-test-lib="new-author-button">
+  <LinkTo @route="author.create" class="btn-new" data-test-new-author-button>
     <div class="sr-only">Add New Author</div>
   </LinkTo>
 </div>
@@ -21,7 +21,7 @@
 
   <ul class="collection">
     {{#each @model as |author|}}
-      <li data-test-lib="author-list-item">
+      <li data-test-author-list-item>
         <AuthorListItem @first={{author.first}} @last={{author.last}} @authorId={{author.id}} />
       </li>
     {{/each}}
