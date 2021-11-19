@@ -13,7 +13,12 @@
         <h3 data-test-author-full-name>{{@model.last}}, {{@model.first}}</h3>
 
         <div class="actions">
-          <LinkTo @route="author.edit" @model={{@model.id}} class="btn-pop">
+          <LinkTo
+            @route="author.edit"
+            @model={{@model.id}}
+            class="btn-pop"
+            data-test-edit-author-button
+          >
             edit
           </LinkTo>
 

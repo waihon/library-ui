@@ -4,6 +4,7 @@
     <Input
       id="first-name"
       placeholder="First Name"
+      data-test-edit-author-first-name
       @type="text"
       @value={{this.first}}
     />
@@ -14,12 +15,13 @@
     <Input
       id="last-name"
       placeholder="Last Name"
+      data-test-edit-author-last-name
       @type="text"
       @value={{this.last}}
     />
   </div>
 
   <div class="form-footer">
-    <button type="submit" class="btn-submit">save</button>
+    <button type="submit" class="btn-submit" data-test-save-author-button>save</button>
   </div>
 </form>
