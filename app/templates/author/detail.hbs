@@ -23,7 +23,10 @@
           </LinkTo>
 
           <button
-            class="btn-recessed" type="button" {{on "click" (fn this.deleteAuthor @model)}}
+            class="btn-recessed"
+            type="button"
+            data-test-delete-author-button
+            {{on "click" (fn this.deleteAuthor @model)}}
           >
             delete
           </button>

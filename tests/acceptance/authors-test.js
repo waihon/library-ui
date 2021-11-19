@@ -100,4 +100,38 @@ module('Acceptance | authors', function (hooks) {
         "The author's first name and last name have been updated"
       );
   });
+
+  test('Delete an author', async function (assert) {
+    this.server.create('author', { first: 'Stephen', last: 'King' });
+    let author2 = this.server.create('author', {
+      first: 'J.K.',
+      last: 'Rowling',
+    });
+
+    await visit('/authors');
+    assert
+      .dom('[data-test-author-link]')
+      .exists({ count: 2 }, 'All author links are rendered');
+    assert
+      .dom('[data-test-author-list-item]:last-child')
+      .hasText(
+        'Rowling, J.K.',
+        'The last author is J.K. Rowling'
+      );
+
+    await click(`[data-test-author-link="${author2.id}"]`);
+    assert.equal(currentURL(), `/authors/${author2.id}`);
+
+    await click('[data-test-delete-author-button]');
+    assert.equal(currentURL(), '/authors');
+    assert
+      .dom('[data-test-author-link]')
+      .exists({ count: 1 }, 'One author has been deleted');
+    assert
+      .dom('[data-test-author-list-item]:last-child')
+      .hasText(
+        'King, Stephen',
+        'The author J.K. Rowling has been deleted'
+      );
+  });
 });
