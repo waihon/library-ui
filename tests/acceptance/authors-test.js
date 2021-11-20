@@ -114,10 +114,7 @@ module('Acceptance | authors', function (hooks) {
       .exists({ count: 2 }, 'All author links are rendered');
     assert
       .dom('[data-test-author-list-item]:last-child')
-      .hasText(
-        'Rowling, J.K.',
-        'The last author is J.K. Rowling'
-      );
+      .hasText('Rowling, J.K.', 'The last author is J.K. Rowling');
 
     await click(`[data-test-author-link="${author2.id}"]`);
     assert.equal(currentURL(), `/authors/${author2.id}`);
@@ -129,9 +126,6 @@ module('Acceptance | authors', function (hooks) {
       .exists({ count: 1 }, 'One author has been deleted');
     assert
       .dom('[data-test-author-list-item]:last-child')
-      .hasText(
-        'King, Stephen',
-        'The author J.K. Rowling has been deleted'
-      );
+      .hasText('King, Stephen', 'The author J.K. Rowling has been deleted');
   });
 });
