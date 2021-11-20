@@ -1,2 +1,41 @@
 {{page-title "Create"}}
-{{outlet}}
+<div class="slide-out-bg"></div>
+<div class="slide-out">
+  <div class="slide-out-card">
+    <LinkTo @route="book" class="btn-back">
+      <span class="sr-only">Back</span>
+    </LinkTo>
+
+    <div class="slide-out-heading">
+      <div class="title">
+        <h3>New Book</h3>
+      </div>
+    </div>
+
+    <div class="slide-out-content">
+      <form>
+        <p class="control">
+          <PowerSelect
+            @options={{@model}}
+            @searchEnabled={{true}}
+            @searchField={{"first"}}
+            @onChange={{this.selectAuthor}}
+            as |author|
+          >
+            {{author.last}}, {{author.first}}
+          </PowerSelect>
+        </p>
+
+        <div class="form-footer">
+          <button
+            type="submit"
+            class="btn-submit"
+            data-test-save-book-button
+          >
+            save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
