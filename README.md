@@ -114,3 +114,10 @@ Specify what it takes to deploy your app.
 * `ember install ember-test-selectors`
 * `ember g mirage-model author`
 * `ember g acceptance-test authors`
+
+### 26. Ember Power Select
+
+* `ember install ember-power-select`
+* `ember g route book`
+* `ember g route book/create`
+* `ember g controller book/create`
