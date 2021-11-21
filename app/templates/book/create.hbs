@@ -13,17 +13,55 @@
     </div>
 
     <div class="slide-out-content">
-      <form>
-        <p class="control">
-          <PowerSelect
-            @searchEnabled={{true}}
-            @search={{this.searchAuthor}}
-            @onChange={{this.selectAuthor}}
-            as |author|
-          >
-            {{author.last}}, {{author.first}}
-          </PowerSelect>
-        </p>
+      <form {{on "submit" this.saveBook}}>
+        <div class="field">
+          <label for="title">Title:</label>
+          <Input
+            id="title"
+            placeholder="Title"
+            data-test-new-book-title
+            @type="text"
+            @value={{@model.title}}
+          />
+        </div>
+
+        <div class="field">
+          <label for="isbn">Title:</label>
+          <Input
+            id="isbn"
+            placeholder="ISBN:"
+            data-test-new-book-isbn
+            @type="text"
+            @value={{@model.isbn}}
+          />
+        </div>
+
+        <div class="field">
+          <label for="publish-date">Title:</label>
+          <Input
+            id="publish-date"
+            placeholder="Publish Date:"
+            data-test-new-book-publish-date
+            @type="date"
+            @value={{@model.publishDate}}
+          />
+        </div>
+
+        <div class="field">
+          <label for="author">Author:</label>
+          <p class="control">
+            <PowerSelect
+              data-test-new-book-author
+              @searchEnabled={{true}}
+              @search={{this.searchAuthor}}
+              @onChange={{this.selectAuthor}}
+              @selected={{this.selectedAuthor}}
+              as |author|
+            >
+              {{author.last}}, {{author.first}}
+            </PowerSelect>
+          </p>
+        </div>
 
         <div class="form-footer">
           <button
