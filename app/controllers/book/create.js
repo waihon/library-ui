@@ -6,4 +6,9 @@ export default class BookCreateController extends Controller {
   selectAuthor(author) {
     console.log(author);
   }
+
+  @action
+  searchAuthor(query) {
+    return this.store.query('author', { filter: { query } });
+  }
 }
