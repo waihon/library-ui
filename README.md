@@ -121,3 +121,7 @@ Specify what it takes to deploy your app.
 * `ember g route book`
 * `ember g route book/create`
 * `ember g controller book/create`
+
+### 28. Ember Save Related
+
+* `ember g model book title isbn publishDate`
