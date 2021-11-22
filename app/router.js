@@ -14,7 +14,7 @@ Router.map(function () {
     // the detail route, we add '/edit' to '/:id' to make it unique.
     this.route('edit', { path: '/:id/edit' });
   });
-  this.route('book', function () {
+  this.route('book', { path: '/books' }, function () {
     this.route('create');
   });
 });
