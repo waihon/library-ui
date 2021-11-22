@@ -63,6 +63,11 @@
           </p>
         </div>
 
+        <div class="field">
+          <label for="add-new-author">Don't See Your Author?</label>
+          <NewAuthorModal id="add-new-author" @onSave={{this.selectAuthor}} />
+        </div>
+
         <div class="form-footer">
           <button
             type="submit"

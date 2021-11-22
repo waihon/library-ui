@@ -1,1 +1,47 @@
-{{yield}}
+<button
+  type="button"
+  class="btn-trigger"
+  {{on "click" (fn (mut this.showModal) true)}}
+>
+  Add a New Author
+</button>
+
+{{#if this.showModal}}
+  <div class="modal">
+    <form class="modal-card" {{on "submit" this.save}}>
+      <h3 class="modal-heading">Add New Author For Book</h3>
+
+      <div class="modal-content">
+        <div class="field">
+          <label for="first-name">First Name:</label>
+          <Input
+            id="first-name"
+            placeholder="First Name"
+            @type="text"
+            @value={{this.author.first}}
+          />
+        </div>
+        <div class="field">
+          <label for="last-name">Last Name:</label>
+          <Input
+            id="last-name"
+            placeholder="Last Name"
+            @type="text"
+            @value={{this.author.last}}
+          />
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn-clear"
+          {{on "click" (fn (mut this.showModal) false)}}
+        >
+          Cancel
+        </button>
+        <button type="submit" class="btn-submit">Submit</button>
+      </div>
+    </form>
+  </div>
+{{/if}}
