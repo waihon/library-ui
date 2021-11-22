@@ -10,7 +10,7 @@ export default class BookRoute extends Route {
   model({ search }) {
     if (search) {
       return this.store.query('book', {
-        filter: { query: search }
+        filter: { query: search },
       });
     }
 

@@ -7,6 +7,6 @@ export default class BookCreateRoute extends Route {
       isbn: '',
       publishedDate: null,
       author: null,
-    }
+    };
   }
 }
