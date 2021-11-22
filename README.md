@@ -130,3 +130,7 @@ Specify what it takes to deploy your app.
 
 * `ember g route book/detail`
 * `ember g controller book/detail`
+
+### 30. Ember Data and Components
+
+* `ember g component new-author-modal -gc`
