@@ -125,3 +125,8 @@ Specify what it takes to deploy your app.
 ### 28. Ember Save Related
 
 * `ember g model book title isbn publishDate`
+
+### 29. Ember CRUD Resources Review
+
+* `ember g route book/detail`
+* `ember g controller book/detail`
