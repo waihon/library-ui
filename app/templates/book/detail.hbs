@@ -10,8 +10,14 @@
         <h3>{{@model.title}}</h3>
 
         <div class="actions">
-          <a class="button-pop">edit</a>
-          <button class="btn-recessed" type="button">delete</button>
+          <a href="#" class="btn-pop">edit</a>
+          <button
+            class="btn-recessed"
+            type="button"
+            {{on "click" this.destroy}}
+          >
+            delete
+          </button>
         </div>
       </div>
 
