@@ -24,10 +24,10 @@
   <ul class="collection">
     {{#each @model as |book|}}
       <li>
-        <a>
+        <LinkTo @route="book.detail" @model={{book.id}}>
           <span class="book-title">{{book.title}}</span>
           <em class="book-isbn">{{book.isbn}}</em>
-        </a>
+        </LinkTo>
       </li>
     {{/each}}
   </ul>
