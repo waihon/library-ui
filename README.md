@@ -134,3 +134,9 @@ Specify what it takes to deploy your app.
 ### 30. Ember Data and Components
 
 * `ember g component new-author-modal -gc`
+
+### 31. Ember Reusable Form Components
+
+* `ember g route book/edit`
+* `ember g controller book/edit`
+* `ember g component book-form -gc`
