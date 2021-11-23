@@ -10,7 +10,9 @@
         <h3>{{@model.title}}</h3>
 
         <div class="actions">
-          <a href="#" class="btn-pop">edit</a>
+          <LinkTo @route="book.edit" @model={{@model.id}} class="btn-pop">
+            edit
+          </LinkTo>
           <button
             class="btn-recessed"
             type="button"

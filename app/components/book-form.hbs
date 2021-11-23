@@ -1,1 +1,65 @@
-{{yield}}
+<form {{on "submit" this.submitChanges}}>
+  <div class="field">
+    <label for="title">Title:</label>
+    <Input
+      id="title"
+      placeholder="Title"
+      data-test-book-title
+      @type="text"
+      @value={{this.title}}
+    />
+  </div>
+
+  <div class="field">
+    <label for="isbn">ISBN:</label>
+    <Input
+      id="isbn"
+      placeholder="ISBN:"
+      data-test-book-isbn
+      @type="text"
+      @value={{this.isbn}}
+    />
+  </div>
+
+  <div class="field">
+    <label for="publish-date">Title:</label>
+    <Input
+      id="publish-date"
+      placeholder="Publish Date:"
+      data-test-book-publish-date
+      @type="date"
+      @value={{this.publishDate}}
+    />
+  </div>
+
+  <div class="field">
+    <label for="author">Author:</label>
+    <p class="control">
+      <PowerSelect
+        data-test-book-author
+        @searchEnabled={{true}}
+        @search={{this.searchAuthor}}
+        @onChange={{this.selectAuthor}}
+        @selected={{this.selectedAuthor}}
+        as |author|
+      >
+        {{author.last}}, {{author.first}}
+      </PowerSelect>
+    </p>
+  </div>
+
+  <div class="field">
+    <label for="add-new-author">Don't See Your Author?</label>
+    <NewAuthorModal id="add-new-author" @onSave={{this.selectAuthor}} />
+  </div>
+
+  <div class="form-footer">
+    <button
+      type="submit"
+      class="btn-submit"
+      data-test-submit-changes-button
+    >
+      save
+    </button>
+  </div>
+</form>
