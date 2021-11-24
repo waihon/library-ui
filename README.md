@@ -140,3 +140,8 @@ Specify what it takes to deploy your app.
 * `ember g route book/edit`
 * `ember g controller book/edit`
 * `ember g component book-form -gc`
+
+### 33. Ember Nested Routes and Model For
+
+* `ember g route author/detail/new-book`
+* `ember g controller author/detail/new-book`
