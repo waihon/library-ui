@@ -8,7 +8,9 @@ export default class Router extends EmberRouter {
 
 Router.map(function () {
   this.route('author', { path: '/authors' }, function () {
-    this.route('detail', { path: '/:id' });
+    this.route('detail', { path: '/:id' }, function() {
+      this.route('new-book');
+    });
     this.route('create');
     // The full path has to be unique. SInce '/:id' has been used by
     // the detail route, we add '/edit' to '/:id' to make it unique.
