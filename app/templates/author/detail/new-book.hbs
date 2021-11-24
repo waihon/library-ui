@@ -1,1 +1,48 @@
-{{outlet}}
+<div class="modal">
+  <form class="modal-card" {{on "submit" this.saveBook}}>
+    <h3 class="modal-heading">
+      Add New Book for {{@model.author.last}}, {{@model.author.first}}
+    </h3>
+
+    <div class="modal-content">
+      <div class="field">
+        <label for="book-title">Book Title:</label>
+        <Input
+          id="book-title"
+          placeholder="Book Title"
+          @type="text"
+          @value={{@model.book.title}}
+        />
+      </div>
+      <div class="field">
+        <label for="isbn">ISBN:</label>
+        <Input
+          id="book-title"
+          placeholder="ISBN"
+          @type="text"
+          @value={{@model.book.isbn}}
+        />
+      </div>
+      <div class="field">
+        <label for="publish-date">Publish Date:</label>
+        <Input
+          id="publish-date"
+          placeholder="Publish Date"
+          @type="date"
+          @value={{@model.book.publishDate}}
+        />
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <LinkTo
+        @route="author.detail"
+        @model={{@model.author.id}}
+        class="btn-clear"
+      >
+        Cancel
+      </LinkTo>
+      <button type="submit" class="btn-submit">Submit</button>
+    </div>
+  </form>
+</div>
