@@ -1,6 +1,8 @@
-import Model, { attr } from '@ember-data/model';
+import Model, { attr, hasMany } from '@ember-data/model';
 
 export default class AuthorModel extends Model {
-  @attr() first;
-  @attr() last;
+  @attr('string') first;
+  @attr('string') last;
+
+  @hasMany('book') books;
 }
