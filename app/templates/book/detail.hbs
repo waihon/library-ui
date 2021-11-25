@@ -7,7 +7,7 @@
 
     <div class="slide-out-heading">
       <div class="title">
-        <h3>{{@model.title}}</h3>
+        <h3 data-test-book-title>{{@model.title}}</h3>
 
         <div class="actions">
           <LinkTo @route="book.edit" @model={{@model.id}} class="btn-pop">
@@ -26,15 +26,19 @@
       <div class="details">
         <p>
           <strong>Author:</strong>
-          <<LinkTo @route="author.detail" @model={{@model.author.id}}>
+          <<LinkTo
+            @route="author.detail"
+            @model={{@model.author.id}}
+            data-test-author-name
+          >
             {{@model.author.last}}, {{@model.author.first}}
           </LinkTo>
         </p>
-        <p>
+        <p data-test-book-publish-date>
           <strong>Publish Date:</strong>
           {{@model.publishDate}}
         </p>
-        <p>
+        <p data-test-book-isbn>
           <strong>ISBN:</strong>
           {{@model.isbn}}
         </p>

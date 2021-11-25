@@ -12,7 +12,7 @@
     />
   </div>
 
-  <LinkTo @route="book.create" class="btn-new">
+  <LinkTo @route="book.create" class="btn-new" data-test-new-book-button>
     <div class="sr-only">Add New Book</div>
   </LinkTo>
 </div>
@@ -27,7 +27,7 @@
         <LinkTo
           @route="book.detail"
           @model={{book.id}}
-          data-test-book-link
+          data-test-book-link="{{book.id}}"
         >
           <span class="book-title">{{book.title}}</span>
           <em class="book-isbn">{{book.isbn}}</em>
