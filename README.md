@@ -108,7 +108,7 @@ Specify what it takes to deploy your app.
 
 * `ember g controller author`
 
-### 24. Testing
+### 24. Testing Authors
 
 * `ember install ember-cli-mirage`
 * `ember install ember-test-selectors`
@@ -145,3 +145,8 @@ Specify what it takes to deploy your app.
 
 * `ember g route author/detail/new-book`
 * `ember g controller author/detail/new-book`
+
+### 33. Testing Books
+
+* `ember g mirage-model book`
+* `ember g acceptance-test books`
