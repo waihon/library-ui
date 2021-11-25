@@ -22,4 +22,10 @@ export default function () {
   this.post('/authors');
   this.patch('/authors/:id');
   this.del('/authors/:id');
+
+  this.get('/books');
+  this.get('/books/:id');
+  this.post('/books');
+  this.patch('/books/:id');
+  this.del('/books/:id');
 }
