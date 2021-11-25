@@ -16,7 +16,7 @@
           <button
             class="btn-recessed"
             type="button"
-            {{on "click" this.destroy}}
+            {{on "click" (fn this.deleteBook @model)}}
           >
             delete
           </button>

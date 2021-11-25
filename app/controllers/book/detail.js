@@ -6,8 +6,8 @@ export default class BookDetailController extends Controller {
   @service router;
 
   @action
-  destroy() {
-    this.model.destroyRecord().then(() => {
+  deleteBook(book) {
+    book.destroyRecord().then(() => {
       this.router.transitionTo('book');
     });
   }
