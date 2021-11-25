@@ -23,8 +23,12 @@
 
   <ul class="collection">
     {{#each @model as |book|}}
-      <li>
-        <LinkTo @route="book.detail" @model={{book.id}}>
+      <li data-test-book-list-item>
+        <LinkTo
+          @route="book.detail"
+          @model={{book.id}}
+          data-test-book-link
+        >
           <span class="book-title">{{book.title}}</span>
           <em class="book-isbn">{{book.isbn}}</em>
         </LinkTo>
