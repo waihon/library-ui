@@ -122,4 +122,57 @@ module('Acceptance | books', function (hooks) {
     assert.dom('[data-test-book-publish-date]').containsText('1998-07-02');
     assert.dom('[data-test-book-isbn]').containsText('0747538492');
   });
+
+  test('Create a book with a new author using new author modal', async function (assert) {
+    let hemingway = this.server.create('author', {
+      first: 'Ernest',
+      last: 'Hemingway',
+    });
+    this.server.create('book', {
+      title: 'For Whom the Bell Tolls',
+      isbn: '9780684803357',
+      publishDate: '1995-07-01',
+      author: hemingway,
+    });
+
+    await visit('/books');
+    assert
+      .dom('[data-test-book-link]')
+      .exists({ count: 1 }, 'The only book link is rendered');
+
+    // Book Form
+    await click('[data-test-new-book-button]');
+    await fillIn( '[data-test-book-title]', 'The Dark Tower: The Gunslinger');
+    await fillIn('[data-test-book-isbn]', '9780937986509');
+    await fillIn('[data-test-book-publish-date]', '1998-01-01');
+
+    // New Author Modal
+    await click('[data-test-new-author-modal-button]')
+    await fillIn('[data-test-author-first-name]', 'Stephen');
+    await fillIn('[data-test-author-last-name]', 'King');
+    await click('[data-test-submit-new-author-modal-button]');
+    assert.dom('.ember-power-select-selected-item').hasText('King, Stephen');
+
+    // Save Book Form
+    await click('[data-test-submit-changes-button]');
+    assert.equal(currentURL(), '/books');
+    assert
+      .dom('[data-test-book-link]')
+      .exists({ count: 2 }, 'New book link is rendered');
+    assert
+      .dom('[data-test-book-list-item]:last-child')
+      .containsText(
+        'The Dark Tower: The Gunslinger 9780937986509',
+        'New book list item contains the correct book title and ISBN'
+      );
+
+    // Display Book Detail
+    await click(`[data-test-book-link="2"]`);
+    assert
+      .dom('[data-test-book-title]')
+      .hasText('The Dark Tower: The Gunslinger');
+    assert.dom('[data-test-author-name]').hasText('King, Stephen');
+    assert.dom('[data-test-book-publish-date]').containsText('1998-01-01');
+    assert.dom('[data-test-book-isbn]').containsText('9780937986509');
+  });
 });
