@@ -175,4 +175,49 @@ module('Acceptance | books', function (hooks) {
     assert.dom('[data-test-book-publish-date]').containsText('1998-01-01');
     assert.dom('[data-test-book-isbn]').containsText('9780937986509');
   });
+
+  test('Update book', async function (assert) {
+    let author1 = this.server.create('author', {
+      first: 'Stephen',
+      last: 'King',
+    });
+    let author2 = this.server.create('author', {
+      first: 'Ernest',
+      last: 'Hemingway',
+    });
+    let book = this.server.create('book', {
+      title: 'For Whom the Bell Tolls',
+      isbn: '9780684803357',
+      publishDate: '1995-07-01',
+      author: author1,
+    });
+
+    // Books Listing
+    await visit('/books');
+    assert
+      .dom('[data-test-book-link]')
+      .exists({ count: 1 }, 'The only book is rendered');
+
+    await click(`[data-test-book-link="${book.id}"]`);
+    assert.equal(currentURL(), `/books/${book.id}`);
+
+    // Edit Book
+    await click('[data-test-edit-book-button]');
+    assert.equal(currentURL(), `/books/${book.id}/edit`);
+
+    // Update Fields
+    await fillIn('[data-test-book-title]', 'Updated Book Title');
+    await fillIn('[data-test-book-isbn]', '0123456789');
+    await fillIn('[data-test-book-publish-date]', '1990-11-12');
+    await selectSearch('.ember-power-select-trigger', 'hem');
+    await selectChoose('.ember-power-select-trigger', 'Hemingway, Ernest');
+
+    // Save Book and transition to Book Detail
+    await click('[data-test-submit-changes-button]');
+    assert.equal(currentURL(), `/books/${book.id}`);
+    assert.dom('[data-test-book-title]') .hasText('Updated Book Title');
+    assert.dom('[data-test-author-name]').hasText('Hemingway, Ernest');
+    assert.dom('[data-test-book-publish-date]').containsText('1990-11-12');
+    assert.dom('[data-test-book-isbn]').containsText('0123456789');
+  });
 });

@@ -10,7 +10,12 @@
         <h3 data-test-book-title>{{@model.title}}</h3>
 
         <div class="actions">
-          <LinkTo @route="book.edit" @model={{@model.id}} class="btn-pop">
+          <LinkTo
+            @route="book.edit"
+            @model={{@model.id}}
+            class="btn-pop"
+            data-test-edit-book-button
+          >
             edit
           </LinkTo>
           <button
