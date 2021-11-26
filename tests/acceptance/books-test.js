@@ -142,12 +142,12 @@ module('Acceptance | books', function (hooks) {
 
     // Book Form
     await click('[data-test-new-book-button]');
-    await fillIn( '[data-test-book-title]', 'The Dark Tower: The Gunslinger');
+    await fillIn('[data-test-book-title]', 'The Dark Tower: The Gunslinger');
     await fillIn('[data-test-book-isbn]', '9780937986509');
     await fillIn('[data-test-book-publish-date]', '1998-01-01');
 
     // New Author Modal
-    await click('[data-test-new-author-modal-button]')
+    await click('[data-test-new-author-modal-button]');
     await fillIn('[data-test-author-first-name]', 'Stephen');
     await fillIn('[data-test-author-last-name]', 'King');
     await click('[data-test-submit-new-author-modal-button]');
@@ -181,7 +181,7 @@ module('Acceptance | books', function (hooks) {
       first: 'Stephen',
       last: 'King',
     });
-    let author2 = this.server.create('author', {
+    this.server.create('author', {
       first: 'Ernest',
       last: 'Hemingway',
     });
@@ -215,9 +215,58 @@ module('Acceptance | books', function (hooks) {
     // Save Book and transition to Book Detail
     await click('[data-test-submit-changes-button]');
     assert.equal(currentURL(), `/books/${book.id}`);
-    assert.dom('[data-test-book-title]') .hasText('Updated Book Title');
+    assert.dom('[data-test-book-title]').hasText('Updated Book Title');
     assert.dom('[data-test-author-name]').hasText('Hemingway, Ernest');
     assert.dom('[data-test-book-publish-date]').containsText('1990-11-12');
     assert.dom('[data-test-book-isbn]').containsText('0123456789');
+  });
+
+  test('Delete book', async function (assert) {
+    let author1 = this.server.create('author', {
+      first: 'Stephen',
+      last: 'King',
+    });
+    let author2 = this.server.create('author', {
+      first: 'Ernest',
+      last: 'Hemingway',
+    });
+    this.server.create('book', {
+      title: 'The Dark Tower: The Gunslinger',
+      isbn: '9780937986509',
+      publishDate: '1998-01-01',
+      author: author1,
+    });
+    let book2 = this.server.create('book', {
+      title: 'For Whom the Bell Tolls',
+      isbn: '9780684803357',
+      publishDate: '1995-07-01',
+      author: author2,
+    });
+
+    // Books Listing
+    await visit('/books');
+    assert
+      .dom('[data-test-book-link]')
+      .exists({ count: 2 }, 'All book links are rendered');
+
+    await click(`[data-test-book-link="${book2.id}"]`);
+    assert.equal(currentURL(), `/books/${book2.id}`);
+
+    // Delete Book
+    await click('[data-test-delete-book-button]');
+    assert.equal(currentURL(), '/books');
+
+    // Books Listing
+    await visit('/books');
+    assert
+      .dom('[data-test-book-link]')
+      .exists({ count: 1 }, 'The deleted book is not rendered');
+
+    assert
+      .dom('[data-test-book-list-item]:first-child')
+      .containsText(
+        'The Dark Tower: The Gunslinger 9780937986509',
+        'The first book list item contains the correct book title'
+      );
   });
 });
