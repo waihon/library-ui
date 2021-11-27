@@ -10,7 +10,7 @@
 
     <div class="slide-out-heading">
       <div class="title">
-        <h3 data-test-author-full-name>{{@model.last}}, {{@model.first}}</h3>
+        <h3 data-test-author-full-name>{{@model.fullName}}</h3>
 
         <div class="actions">
           <LinkTo
@@ -36,7 +36,7 @@
 
     <div class="slide-out-content">
       <div class="title">
-        <h3>{{@model.books.length}} books from this author</h3>
+        <h3>{{pluralize @model.books.length 'book'}} from this author</h3>
       </div>
 
       <div class="actions">
