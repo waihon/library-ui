@@ -2,7 +2,10 @@ import { module, test } from 'qunit';
 import { visit, currentURL, click, fillIn } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { setupMirage } from 'ember-cli-mirage/test-support';
-import { createAuthor } from 'library-ui/tests/helpers/custom-helpers';
+import {
+  createAuthor,
+  createAuthorBook,
+} from 'library-ui/tests/helpers/custom-helpers';
 
 module('Acceptance | authors', function (hooks) {
   setupApplicationTest(hooks);
@@ -135,5 +138,73 @@ module('Acceptance | authors', function (hooks) {
     assert
       .dom('[data-test-author-list-item]:last-child')
       .hasText('King, Stephen', 'The author J.K. Rowling has been deleted');
+  });
+
+  test('Create book from author detail page', async function (assert) {
+    // Prepare data
+    await visit('/authors');
+    await createAuthor('Stephen', 'King');
+    await visit('/books');
+    await createAuthorBook(
+      {
+        first: 'J.K.',
+        last: 'Rowling',
+      },
+      {
+        title: 'Harry Potter and the Chamber of Secrets',
+        isbn: '0747538492',
+        publishDate: '1998-07-02',
+      }
+    );
+
+    // Authors List
+    await visit('/authors');
+    assert
+      .dom('[data-test-author-link]')
+      .exists({ count: 2 }, 'All author links are rendered');
+    await click('[data-test-author-link="2"]');
+
+    // Author Detail
+    assert.equal(currentURL(), '/authors/2');
+    assert
+      .dom('[data-test-author-full-name]')
+      .hasText(
+        'Rowling, J.K.',
+        'Clicking the 2nd link display the name of the 2nd author'
+      );
+    assert
+      .dom('[data-test-books-count]')
+      .hasText('1 book from this author', 'The second author has 1 book');
+    assert
+      .dom('[data-test-book-link]')
+      .exists({ count: 1 }, "The second author's only book is rendered");
+    await click('[data-test-add-author-book-button]');
+
+    // Add New Book for Author
+    assert.equal(currentURL(), `/authors/2/new-book`);
+    await fillIn(
+      '[data-test-book-title]',
+      'Harry Porter and the Prisoner of Azkaban'
+    );
+    await fillIn('[data-test-book-isbn]', '0747542155');
+    await fillIn('[data-test-book-publish-date]', '1999-07-08');
+    await click('[data-test-submit-new-book]');
+
+    // Author Detail
+    assert
+      .dom('[data-test-books-count]')
+      .hasText(
+        '2 books from this author',
+        'The second author has another book'
+      );
+    assert
+      .dom('[data-test-book-link]')
+      .exists({ count: 2 }, "The second author's all books are rendered");
+    assert
+      .dom('[data-test-book-list-item]:last-child')
+      .containsText(
+        'Harry Porter and the Prisoner of Azkaban 0747542155',
+        'The new book is rendered with correct book title and ISBN'
+      );
   });
 });

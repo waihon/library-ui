@@ -10,6 +10,7 @@
         <Input
           id="book-title"
           placeholder="Book Title"
+          data-test-book-title
           @type="text"
           @value={{@model.book.title}}
         />
@@ -19,6 +20,7 @@
         <Input
           id="book-title"
           placeholder="ISBN"
+          data-test-book-isbn
           @type="text"
           @value={{@model.book.isbn}}
         />
@@ -28,6 +30,7 @@
         <Input
           id="publish-date"
           placeholder="Publish Date"
+          data-test-book-publish-date
           @type="date"
           @value={{@model.book.publishDate}}
         />
@@ -42,7 +45,13 @@
       >
         Cancel
       </LinkTo>
-      <button type="submit" class="btn-submit">Submit</button>
+      <button
+        type="submit"
+        class="btn-submit"
+        data-test-submit-new-book
+      >
+        Submit
+      </button>
     </div>
   </form>
 </div>
