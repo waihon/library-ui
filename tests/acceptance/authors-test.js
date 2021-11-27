@@ -62,13 +62,21 @@ module('Acceptance | authors', function (hooks) {
       .exists({ count: 2 }, 'All author links are rendered');
 
     await click(`[data-test-author-link="${author2.id}"]`);
-
     assert
       .dom('[data-test-author-full-name]')
       .hasText(
         'Rowling, J.K.',
         'Clicking the 2nd link display the name of the 2nd author'
       );
+    assert
+      .dom('[data-test-books-count]')
+      .hasText(
+        '0 books from this author',
+        'A newly created author has 0 books'
+      );
+    assert
+      .dom('[data-test-book-list-link]')
+      .exists({ count: 0 }, 'A newly created author does not have any book');
   });
 
   test('Update an author', async function (assert) {

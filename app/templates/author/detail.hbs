@@ -36,7 +36,9 @@
 
     <div class="slide-out-content">
       <div class="title">
-        <h3>{{pluralize @model.books.length 'book'}} from this author</h3>
+        <h3 data-test-books-count>
+          {{pluralize @model.books.length 'book'}} from this author
+        </h3>
       </div>
 
       <div class="actions">
@@ -51,9 +53,13 @@
 
       <ul class="book-list">
         {{#each @model.books as |book|}}
-          <li class="book">
+          <li class="book" data-test-book-list-item>
             <p class="book-title">
-              <LinkTo @route="book.detail" @model={{book.id}}>
+              <LinkTo
+                @route="book.detail"
+                @model={{book.id}}
+                data-test-book-link
+              >
                 {{book.title}}
               </LinkTo>
             </p>
