@@ -18,7 +18,9 @@ Router.map(function () {
   });
   this.route('book', { path: '/books' }, function () {
     this.route('create');
-    this.route('detail', { path: '/:id' }, function () {});
+    this.route('detail', { path: '/:id' }, function () {
+      this.route('new-review');
+    });
     this.route('edit', { path: '/:id/edit' });
   });
 });
