@@ -1,4 +1,4 @@
-import Model, { attr, belongsTo } from '@ember-data/model';
+import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 
 export default class BookModel extends Model {
   @attr() title;
@@ -9,4 +9,6 @@ export default class BookModel extends Model {
   // author refers to that coming in from the API server, and
   // it's what the relationship is called.
   @belongsTo('author') author;
+
+  @hasMany('review') reviews;
 }
