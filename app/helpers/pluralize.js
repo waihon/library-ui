@@ -21,10 +21,7 @@ import { helper } from '@ember/component/helper';
 //   appendixes --> appendixes, Appendixes --> Appendixes,
 //   APPENDIXES --> APPENDIXES, aPPENDIXEs --> aPPENDIXEs
 // Please refer to test/unit/helpers/pluralize-test.js for more examples.
-export function pluralize(input) {
-  const count = input[0];
-  const singular = input[1];
-  const plural = input[2];
+export function pluralize([count, singular, plural]) {
   const lowerCasedSingular = singular.toLowerCase();
   const isAllUpperCase = /^[A-Z]*$/.test(singular);
   const isFirstCharUpperCase = /^[A-Z]/.test(singular.substring(0, 1));
