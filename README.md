@@ -150,3 +150,14 @@ Specify what it takes to deploy your app.
 
 * `ember g mirage-model book`
 * `ember g acceptance-test books`
+
+### 35. Ember Reviews Nested Resource
+
+* `ember g model review`
+* `ember g route book/detail/index`
+* `ember g route book/detail/new-review`
+* `ember g controller book/detail/new-review`
+* `ember g component review-form -gc`
+* ` ember t -s -m="Unit | Helper | pluralize"` (for testing a group of tests that are specified in `module()` in QUnit)
+* `ember t -s -f="pluralize"` (for testing a group of tests with modules or test descriptions matching a phrase)
+* `ember g helper-test pluralize`
