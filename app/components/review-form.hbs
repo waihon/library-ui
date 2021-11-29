@@ -1,1 +1,24 @@
-{{yield}}
+{{!--
+  Component arguments:
+  * review: A new review object
+  * book: An existing book object for the new review
+  * onSubmit: A function to be called when the form is submitted
+--}}
+<form {{on "submit" this.submitChanges}}>
+  <div class="field">
+    <label for="full-name">Your Full Name</label>
+    <Input id="full-name" placeholder="Name" @type="text" @value={{this.user}} />
+  </div>
+
+  <div class="field">
+    <label for="review-text">Write Your Review</label>
+    <Input id="review-text" placeholder="Review Text" @type="text" @value={{this.body}} />
+  </div>
+
+  <div class="form-footer">
+    <LinkTo @route="book.detail" @model={{@book.id}} class="btn-reset">
+      reset
+    </LinkTo>
+    <button type="submit" class="btn-submit">save</button>
+  </div>
+</form>
