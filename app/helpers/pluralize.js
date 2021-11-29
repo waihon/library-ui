@@ -1,17 +1,35 @@
 import { helper } from '@ember/component/helper';
 
-// Examples:
-// pluralize(0, 'book') ==> '0 books'
-// pluralize(1, 'Book') ==> '1 book'
-// pluralize(3, 'BOOK') ==> '3 books'
-// pluralize(0, 'appendix') ==> '0 appendices'
-// pluralize(1, 'Appendix') ==> '1 appendix'
-// pluralize(3, 'APPENDIX') ==> '3 appendices'
-// pluralize(5, 'appendix', 'appendixes') ==> '5 appendixes')
+// Singulars will always be returned as passed in, e.g.
+//   book --> book, Book --> Book, BOOK --> BOOK, bOOk --> bOOK
+// For irregular plural forms such as appendices:
+// * All uppercase will return all in upeprcase, e.g.
+//   APPENDIX --> APPENDICES
+// * First character in uppercase (regarldess of the rest) will return first
+//   character in uppercase while the remaining in lowercase, e.g.
+//   Appendix --> Appendices, APPENdix --> Appendices
+// * First character in lowercase (regarless of the rest) will return first
+//   character in lowercase and the remaining in lowercase as well, e.g.
+//   appendix --> appendices, appenDIX --> appendices
+// For regular plural forms such as books:
+// * All uppercase will return all in uppercase, e.g.
+//   BOOK --> BOOKS
+// * Lowercase or mixed case will be returned with the original singular
+//   concated with 's', e.g.
+//   book --> books, Book --> Books, bOOk --> bOOKs
+// Plural form passed in will always be returned as it is, e.g.
+//   appendixes --> appendixes, Appendixes --> Appendixes,
+//   APPENDIXES --> APPENDIXES, aPPENDIXEs --> aPPENDIXEs
+// Please refer to test/unit/helpers/pluralize-test.js for more examples.
 export function pluralize(input) {
   const count = input[0];
-  const singular = input[1] && input[1].toLowerCase();
-  let plural = input[2] && input[2].toLowerCase();
+  const singular = input[1];
+  const plural = input[2];
+  const lowerCasedSingular = singular.toLowerCase();
+  const isAllUpperCase = /^[A-Z]*$/.test(singular);
+  const isFirstCharUpperCase = /^[A-Z]/.test(singular.substring(0, 1));
+  let pluralized;
+  let isIrregular = false;
 
   // https://www.thoughtco.com/irregular-plural-nouns-in-english-1692634
   // https://www.englishpractice.com/improve/irregular-special-plurals/
@@ -129,11 +147,34 @@ export function pluralize(input) {
     ['woman', 'women'],
   ]);
 
-  if (!plural) {
-    plural = singularPlural.get(singular) ?? `${singular}s`;
+  // Determine the plural form
+  if (plural) {
+    pluralized = plural;
+  } else {
+    pluralized = singularPlural.get(lowerCasedSingular);
+    if (pluralized) {
+      isIrregular = true;
+    } else {
+      // Singular in original case + 's'
+      pluralized = `${singular}s`;
+    }
   }
 
-  return count === 1 ? `${count} ${singular}` : `${count} ${plural}`;
+  // Convert the case if necessary
+  if (isIrregular) {
+    if (isAllUpperCase) {
+      pluralized = pluralized.toUpperCase();
+    } else if (isFirstCharUpperCase) {
+      pluralized =
+        pluralized.substring(0, 1).toUpperCase() + pluralized.substring(1);
+    }
+  } else {
+    if (isAllUpperCase) {
+      pluralized = pluralized.toUpperCase();
+    }
+  }
+
+  return count === 1 ? `${count} ${singular}` : `${count} ${pluralized}`;
 }
 
 export default helper(pluralize);
