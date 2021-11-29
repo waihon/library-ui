@@ -1,1 +1,26 @@
-{{outlet}}
+<div class="title">
+  <h3>{{pluralize @model.reviews.length 'Review'}}</h3>
+
+  <div class="actions">
+    <LinkTo
+      @route="book.detail.new-review"
+      @model={{@model.id}}
+      class="btn-secondary btn-add btn"
+    >
+      Add your review
+    </LinkTo>
+  </div>
+</div>
+
+<ul class="review-list">
+  {{#each @model.reviews as |review|}}
+    <li class="review">
+      <p>{{review.body}}</p>
+
+      <div class="details">
+        <p class="review-user">{{review.user}}</p>
+        <p class="review-time">{{review.createdAt}}</p>
+      </div>
+    </li>
+  {{/each}}
+</ul>
