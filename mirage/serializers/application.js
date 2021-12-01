@@ -19,6 +19,18 @@ export default JSONAPISerializer.extend({
           related: `/books/${id}/author`,
           self: `/books/${id}/relationships/author`,
         },
+        reviews: {
+          related: `/books/${id}/reviews`,
+          self: `/books/${id}/relationships/reviews`,
+        },
+      };
+    }
+    if (modelName === 'review') {
+      return {
+        book: {
+          related: `/reviews/${id}/book`,
+          self: `/reviews/${id}/relationships/book`,
+        },
       };
     }
   },
