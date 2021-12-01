@@ -68,7 +68,13 @@ export default function () {
     const book = schema.books.find(id);
     return schema.authors.find(book.authorId);
   });
+  this.get('/books/:id/reviews', function (schema, request) {
+    let id = request.params.id;
+    return schema.reviews.where({ bookId: id });
+  });
   this.post('/books');
   this.patch('/books/:id');
   this.del('/books/:id');
+
+  this.post('/reviews');
 }
