@@ -165,4 +165,42 @@ export default {
       authorId: '11',
     },
   ],
+  reviews: [
+    {
+      user: 'user1',
+      body: "A pivotal work in this author's life!",
+      createdAt: '2021-11-29T08:23:07.156Z',
+      bookId: '1',
+    },
+    {
+      user: 'user2',
+      body: 'I like this book a lot!',
+      createdAt: '2021-11-30T09:17:03.201',
+      bookId: '1',
+    },
+    {
+      user: 'user3',
+      body: 'This book is very informative!',
+      createdAt: '2021-12-01T08:23:07.164Z',
+      bookId: '1',
+    },
+    {
+      user: 'user4',
+      body: "A pivotal work in this author's life!",
+      createdAt: '2021-11-29T08:23:07.156Z',
+      bookId: '3',
+    },
+    {
+      user: 'user5',
+      body: 'I like this book a lot!',
+      createdAt: '2021-11-30T09:17:03.201',
+      bookId: '3',
+    },
+    {
+      user: 'user6',
+      body: 'This book is very informative!',
+      createdAt: '2021-12-01T08:23:07.164Z',
+      bookId: '3',
+    },
+  ],
 };

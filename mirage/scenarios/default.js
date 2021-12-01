@@ -14,4 +14,8 @@ export default function (server) {
   data.books.map((book) => {
     server.create('book', book);
   });
+
+  data.reviews.map((review) => {
+    server.create('review', review);
+  });
 }
