@@ -161,3 +161,8 @@ Specify what it takes to deploy your app.
 * ` ember t -s -m="Unit | Helper | pluralize"` (for testing a group of tests that are specified in `module()` in QUnit)
 * `ember t -s -f="pluralize"` (for testing a group of tests with modules or test descriptions matching a phrase)
 * `ember g helper-test pluralize`
+
+### 35. Ember Mirage for Development
+
+* `npm install faker`
+* `ember g mirage-model review`
