@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
+import { task, timeout } from 'ember-concurrency';
 
 export default class BookFormComponent extends Component {
   @service store;
@@ -41,5 +42,12 @@ export default class BookFormComponent extends Component {
       publishDate: this.publishDate,
       author: this.selectedAuthor,
     });
+  }
+
+  @task
+  *searchAuthorTask(query) {
+    // Invoke API server after 500 ms instead of after every keystroke
+    yield timeout(500);
+    return this.store.query('author', { filter: { query } });
   }
 }
