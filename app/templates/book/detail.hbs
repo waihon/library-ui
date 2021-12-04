@@ -42,7 +42,7 @@
         </p>
         <p data-test-book-publish-date>
           <strong>Publish Date:</strong>
-          {{@model.publishDate}}
+          {{moment-format @model.publishDate "MMMM Do YYYY"}}
         </p>
         <p data-test-book-isbn>
           <strong>ISBN:</strong>
