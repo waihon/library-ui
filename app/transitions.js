@@ -7,6 +7,10 @@ export default function () {
   //     this.reverse('toRight')
   //   );
 
-  // Default transition
-  this.transition(this.use('fade', { duration: 1000 }));
+  // Scope the transition to the modal-if class to avoid
+  // conflicting transitions.
+  this.transition(
+    this.hasClass('modal-if'),
+    this.use('fade', { duration: 1000 })
+  );
 }
