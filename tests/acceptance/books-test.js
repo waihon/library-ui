@@ -119,7 +119,7 @@ module('Acceptance | books', function (hooks) {
       .dom('[data-test-book-title]')
       .hasText('Harry Potter and the Chamber of Secrets');
     assert.dom('[data-test-author-name]').hasText('Rowling, J.K.');
-    assert.dom('[data-test-book-publish-date]').containsText('1998-07-02');
+    assert.dom('[data-test-book-publish-date]').containsText('July 2nd 1998');
     assert.dom('[data-test-book-isbn]').containsText('0747538492');
   });
 
@@ -172,7 +172,9 @@ module('Acceptance | books', function (hooks) {
       .dom('[data-test-book-title]')
       .hasText('The Dark Tower: The Gunslinger');
     assert.dom('[data-test-author-name]').hasText('King, Stephen');
-    assert.dom('[data-test-book-publish-date]').containsText('1998-01-01');
+    assert
+      .dom('[data-test-book-publish-date]')
+      .containsText('January 1st 1998');
     assert.dom('[data-test-book-isbn]').containsText('9780937986509');
   });
 
@@ -217,7 +219,9 @@ module('Acceptance | books', function (hooks) {
     assert.equal(currentURL(), `/books/${book.id}`);
     assert.dom('[data-test-book-title]').hasText('Updated Book Title');
     assert.dom('[data-test-author-name]').hasText('Hemingway, Ernest');
-    assert.dom('[data-test-book-publish-date]').containsText('1990-11-12');
+    assert
+      .dom('[data-test-book-publish-date]')
+      .containsText('November 12th 1990');
     assert.dom('[data-test-book-isbn]').containsText('0123456789');
   });
 
