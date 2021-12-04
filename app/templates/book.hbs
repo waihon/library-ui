@@ -37,4 +37,6 @@
   </ul>
 </div>
 
-{{outlet}}
+{{!-- A class with overflow set to visible is required for transition --}}
+{{!-- to progress gradually instead of pop up at the end of a transition. --}}
+{{liquid-outlet class="slide-container"}}

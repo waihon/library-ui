@@ -59,4 +59,10 @@ export default function () {
     this.use('explode', ...slidingCardIn),
     this.reverse('explode', ...slidingCardOut)
   );
+
+  this.transition(
+    this.fromRoute('book.index'),
+    this.use('explode', ...slidingCardIn),
+    this.reverse('explode', ...slidingCardOut)
+  );
 }
