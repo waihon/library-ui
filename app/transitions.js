@@ -8,5 +8,5 @@ export default function () {
   //   );
 
   // Default transition
-  this.transition(this.use('fade'));
+  this.transition(this.use('fade', { duration: 1000 }));
 }
