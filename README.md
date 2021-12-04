@@ -170,3 +170,9 @@ Specify what it takes to deploy your app.
 ### 36. Data Formatting with Ember Moment
 
 * `ember install ember-moment`
+
+### 37. Ember Liquid Fire Basics
+
+* `ember install liquid-fire`
+* `ember feature:enable jquery-integration`
+* `ember install @ember/jquery`
