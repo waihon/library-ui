@@ -25,4 +25,6 @@ export default function () {
     this.use('fade', { duration }),
     this.reverse('fade', { duration })
   );
+
+  this.transition(this.fromRoute('author.index'), this.use('fade'));
 }
