@@ -166,3 +166,7 @@ Specify what it takes to deploy your app.
 
 * `npm install faker`
 * `ember g mirage-model review`
+
+### 36. Data Formatting with Ember Moment
+
+* `ember install ember-moment`
