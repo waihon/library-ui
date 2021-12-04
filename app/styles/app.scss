@@ -3,3 +3,9 @@
 @import 'embercasts-overrides/panel.scss';
 
 @import "ember-power-select";
+
+// To stop the back button from peeking through by setting the same z-index
+// value of the back button, which is one, or one higher than that.
+.modal-if {
+  z-index: 1;
+}
