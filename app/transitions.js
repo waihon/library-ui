@@ -1,3 +1,5 @@
+const duration = 1000;
+
 export default function () {
   // Add your transitions here, like:
   //   this.transition(
@@ -9,8 +11,12 @@ export default function () {
 
   // Scope the transition to the modal-if class to avoid
   // conflicting transitions.
+  this.transition(this.hasClass('modal-if'), this.use('fade', { duration }));
+
+  // Scope the transition of a specific from-route
   this.transition(
-    this.hasClass('modal-if'),
-    this.use('fade', { duration: 1000 })
+    this.fromRoute('book.detail.index'),
+    this.use('toLeft', { duration }),
+    this.reverse('toRight', { duration })
   );
 }
