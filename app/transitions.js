@@ -1,4 +1,4 @@
-const duration = 1000;
+const duration = 600;
 
 export default function () {
   // Add your transitions here, like:
@@ -18,5 +18,11 @@ export default function () {
     this.fromRoute('book.detail.index'),
     this.use('toLeft', { duration }),
     this.reverse('toRight', { duration })
+  );
+
+  this.transition(
+    this.fromRoute('author.detail.index'),
+    this.use('fade', { duration }),
+    this.reverse('fade', { duration })
   );
 }
