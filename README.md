@@ -176,3 +176,12 @@ Specify what it takes to deploy your app.
 * `ember install liquid-fire`
 * `ember feature:enable jquery-integration`
 * `ember install @ember/jquery`
+
+### 43. Ember Data Handling Validation Errors
+
+* `npm update embercasts-library-styles`
+* `ember g route register`
+* `ember g controller register`
+* `ember g component register-form`
+* `ember g model user email username password passwordConfirmation`
+* `ember g component-class register-form`
