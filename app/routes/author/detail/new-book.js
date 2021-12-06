@@ -11,7 +11,7 @@ export default class AuthorDetailNewBookRoute extends Route {
         isbn: '',
         publishDate: '',
         author,
-      }
-    }
+      },
+    };
   }
 }
