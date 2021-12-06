@@ -1,1 +1,83 @@
-{{yield}}
+<div class="slide-out">
+  <div class="slide-out-card">
+    <div class="slide-out-heading">
+      <div class="title">
+        <h3>Register</h3>
+      </div>
+    </div>
+
+    <div class="slide-out-content">
+      <form {{on "submit" this.saveUser}}>
+        <div class="field">
+          <label for="email">Email:</label>
+          <Input
+            id="email"
+            placeholder="Email"
+            data-test-register-email
+            @type="text"
+            @value={{this.email}}
+          />
+
+          {{#each @errors.email as |error|}}
+            <span class="error-message">{{error.message}}</span>
+          {{/each}}
+        </div>
+
+        <div class="field">
+          <label for="username">Username:</label>
+          <Input
+            id="username"
+            placeholder="Username"
+            data-test-register-username
+            @type="text"
+            @value={{this.username}}
+          />
+
+          {{#each @errors.username as |error|}}
+            <span class="error-message">{{error.message}}</span>
+          {{/each}}
+        </div>
+
+        <div class="field">
+          <label for="password">Password:</label>
+          <Input
+            id="password"
+            placeholder="Password"
+            data-test-register-password
+            @type="password"
+            @value={{this.password}}
+          />
+
+          {{#each @errors.password as |error|}}
+            <span class="error-message">{{error.message}}</span>
+          {{/each}}
+        </div>
+
+        <div class="field">
+          <label for="password-confirmation">Confirm Password:</label>
+          <Input
+            id="password-confirmation"
+            placeholder="Confirm Password"
+            data-test-register-password-confirmation
+            @type="password"
+            @value={{this.passwordConfirmation}}
+          />
+
+          {{#each @errors.passwordConfirmation as |error|}}
+            <span class="error-message">{{error.message}}</span>
+          {{/each}}
+        </div>
+
+        <div class="form-footer">
+          <button
+            type="submit"
+            class="btn-submit"
+            data-test-save-author-button
+          >
+            save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
