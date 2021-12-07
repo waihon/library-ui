@@ -192,3 +192,8 @@ Specify what it takes to deploy your app.
 * `ember g route login`
 * `ember g controller login`
 * `ember g component login-form -gc`
+
+### 45. Ember Simple Auth Logout
+
+* `ember g component nav-bar -gc`
+* `ember g route application`
