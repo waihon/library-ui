@@ -1,1 +1,19 @@
-{{yield}}
+<nav class="main-nav">
+  <h1 class="logo">
+    <LinkTo @route="index">
+      <img src="/logo.svg" alt="Ember Library">
+      <span class="sr-only">Ember Library</span>
+    </LinkTo>
+  </h1>
+
+  <ul>
+    <li><LinkTo @route="author">Authors</LinkTo></li>
+    <li><LinkTo @route="book">Books</LinkTo></li>
+    {{#if this.session.isAuthenticated}}
+      <li><a href="#" {{on "click" this.logout}}>Logout</a></li>
+    {{else}}
+      <li><LinkTo @route="register">Register</LinkTo></li>
+      <li><LinkTo @route="login">Login</LinkTo></li>
+    {{/if}}
+  </ul>
+</nav>
