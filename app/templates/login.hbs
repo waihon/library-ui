@@ -1,2 +1,3 @@
 {{page-title "Login"}}
-{{outlet}}
+
+<LoginForm @user={{@model}} @onSubmit={{this.login}} @errors={{this.errors}} />
