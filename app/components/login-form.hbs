@@ -1,1 +1,48 @@
-{{yield}}
+<div class="slide-out">
+  <div class="slide-out-card">
+    <div class="slide-out-heading">
+      <div class="title">
+        <h3>Login</h3>
+      </div>
+    </div>
+
+    <div class="slide-out-content">
+      <form {{on "submit" this.login}}>
+        {{#each @errors as |error|}}
+          <div class="error-alert">{{error.detail}}</div>
+        {{/each}}
+        <div class="field">
+          <label for="email">Email:</label>
+          <Input
+            id="email"
+            placeholder="Email"
+            data-test-register-email
+            @type="text"
+            @value={{this.email}}
+          />
+        </div>
+
+        <div class="field">
+          <label for="password">Password:</label>
+          <Input
+            id="password"
+            placeholder="Password"
+            data-test-register-password
+            @type="password"
+            @value={{this.password}}
+          />
+        </div>
+
+        <div class="form-footer">
+          <button
+            type="submit"
+            class="btn-submit"
+            data-test-save-author-button
+          >
+            save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
