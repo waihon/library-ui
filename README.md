@@ -185,3 +185,10 @@ Specify what it takes to deploy your app.
 * `ember g component register-form`
 * `ember g model user email username password passwordConfirmation`
 * `ember g component-class register-form`
+
+### 44. Ember Simple Auth Login
+
+* `ember install ember-simple-auth ember-simple-auth-token`
+* `ember g route login`
+* `ember g controller login`
+* `ember g component login-form -gc`
