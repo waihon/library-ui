@@ -29,6 +29,11 @@ module.exports = function (environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV['ember-simple-auth-token'] = {
+      serverTokenEndpoint: 'http://localhost:3000/session',
+      // The backend doesn't support refresh of access tokens
+      refreshAccessTokens: false,
+    };
   }
 
   if (environment === 'test') {
