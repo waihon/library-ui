@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 
 export default class NavBarComponent extends Component {
   @service session;
+  @service('current-user') currentUser;
 
   @action
   logout(event) {

@@ -16,4 +16,10 @@
       <li><LinkTo @route="login">Login</LinkTo></li>
     {{/if}}
   </ul>
+
+  {{#if this.session.isAuthenticated}}
+    <div class="current-user">
+      Hello <strong>{{this.currentUser.user.username}}</strong>
+    </div>
+  {{/if}}
 </nav>
