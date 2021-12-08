@@ -3,6 +3,16 @@ import { inject as service } from '@ember/service';
 
 export default class ApplicationRoute extends Route {
   @service session;
+  @service('current-user') currentUser;
+
+  // beforeModel is very similar to mode function in that it allows us to
+  // wait for data to load in our application before continuing to render.
+  // But beforeModel doesn't add any data into our controller or template.
+  beforeModel() {
+    super.beforeModel(...arguments);
+
+    this.loadUser();
+  }
 
   constructor() {
     super(...arguments);
@@ -17,5 +27,15 @@ export default class ApplicationRoute extends Route {
       // one session to another.
       window.location.replace('/login');
     });
+
+    this.session.on('authenticationSucceeded', () => {
+      this.loadUser();
+    });
+  }
+
+  loadUser() {
+    if (this.session.isAuthenticated) {
+      this.currentUser.load();
+    }
   }
 }
