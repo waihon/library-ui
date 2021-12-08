@@ -197,3 +197,8 @@ Specify what it takes to deploy your app.
 
 * `ember g component nav-bar -gc`
 * `ember g route application`
+
+### 46. Loading Current User Information
+
+* `ember g service current-user`
+* `ember g adapter user`
