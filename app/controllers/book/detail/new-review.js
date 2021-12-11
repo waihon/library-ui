@@ -9,8 +9,14 @@ export default class BookDetailNewReviewController extends Controller {
   saveReview(attrs) {
     let review = this.store.createRecord('review', attrs);
 
-    review.save().then(() => {
-      this.router.transitionTo('book.detail', this.model.book.id);
-    });
+    review
+      .save()
+      .then(() => {
+        this.router.transitionTo('book.detail', this.model.book.id);
+      })
+      .catch((e) => {
+        // Otherwise, the review created above still exists in the local store.
+        review.rollbackAttributes();
+      });
   }
 }

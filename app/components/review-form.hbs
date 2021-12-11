@@ -6,11 +6,6 @@
 --}}
 <form {{on "submit" this.submitChanges}}>
   <div class="field">
-    <label for="full-name">Your Full Name</label>
-    <Input id="full-name" placeholder="Name" @type="text" @value={{this.user}} />
-  </div>
-
-  <div class="field">
     <label for="review-text">Write Your Review</label>
     <Input id="review-text" placeholder="Review Text" @type="text" @value={{this.body}} />
   </div>

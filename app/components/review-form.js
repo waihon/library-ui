@@ -10,9 +10,8 @@ export default class ReviewFormComponent extends Component {
   constructor() {
     super(...arguments);
 
-    const { user, body, book } = this.args.review;
+    const { body, book } = this.args.review;
 
-    this.user = user;
     this.body = body;
     this.book = book;
   }
@@ -22,7 +21,6 @@ export default class ReviewFormComponent extends Component {
     event.preventDefault();
 
     this.args.onSubmit({
-      user: this.user,
       body: this.body,
       book: this.book,
     });
