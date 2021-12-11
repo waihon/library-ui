@@ -4,6 +4,7 @@ export default class BookModel extends Model {
   @attr() title;
   @attr() isbn;
   @attr() publishDate;
+  @attr() username;
 
   // 'author' refers an Ember model in our local application.
   // author refers to that coming in from the API server, and
