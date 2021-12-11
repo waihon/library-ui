@@ -15,9 +15,10 @@ export default class LoginController extends Controller {
         email: attrs.email,
         password: attrs.password,
       })
-      .then(() => {
-        this.router.transitionTo('index');
-      })
+      // Instead of always transitioning to the index route, we want to
+      // sometines transition to a different route.
+      // We let ember-simple-auth to handle that for us by itself.
+      // Therefore, we don't have to specify `.then()` here.
       .catch((e) => {
         // e = {
         //   statusText: 'Unauthorized',
