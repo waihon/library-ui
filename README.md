@@ -202,3 +202,9 @@ Specify what it takes to deploy your app.
 
 * `ember g service current-user`
 * `ember g adapter user`
+
+### 52. User-Level Authorization Controls with Ember Can Part 1
+
+* `ember install ember-can`
+* `ember g ability author`
+* `ember g ability book`
