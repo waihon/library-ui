@@ -13,4 +13,9 @@ export default class AuthorAbility extends Ability {
   get canEdit() {
     return this.currentUser.user.username === this.model.username;
   }
+
+  @computed('canEdit')
+  get canDelete() {
+    return this.canEdit;
+  }
 }
