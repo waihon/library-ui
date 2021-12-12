@@ -4,11 +4,14 @@ import { inject as service } from '@ember/service';
 
 export default class BookDetailController extends Controller {
   @service router;
+  @service abilities;
 
   @action
   deleteBook(book) {
-    book.destroyRecord().then(() => {
-      this.router.transitionTo('book');
-    });
+    if (this.abilities.can('delete book', book)) {
+      book.destroyRecord().then(() => {
+        this.router.transitionTo('book');
+      });
+    }
   }
 }
