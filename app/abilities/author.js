@@ -11,7 +11,11 @@ export default class AuthorAbility extends Ability {
   // listed out are assumed to be missing dependencies.
   @computed('currentUser.user.username', 'model.username')
   get canEdit() {
-    return this.currentUser.user.username === this.model.username;
+    if (this.currentUser.user === undefined) {
+      return false;
+    } else {
+      return this.currentUser.user.username === this.model.username;
+    }
   }
 
   @computed('canEdit', 'model.books.length')
