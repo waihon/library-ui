@@ -2,13 +2,15 @@
   <h3>{{pluralize @model.reviews.length 'Review'}}</h3>
 
   <div class="actions">
-    <LinkTo
-      @route="book.detail.new-review"
-      @model={{@model.id}}
-      class="btn-secondary btn-add btn"
-    >
-      Add your review
-    </LinkTo>
+    {{#if (can "create review")}}
+      <LinkTo
+        @route="book.detail.new-review"
+        @model={{@model.id}}
+        class="btn-secondary btn-add btn"
+      >
+        Add your review
+      </LinkTo>
+    {{/if}}
   </div>
 </div>
 
