@@ -24,14 +24,16 @@
             </LinkTo>
           {{/if}}
 
-          <button
-            class="btn-recessed"
-            type="button"
-            data-test-delete-author-button
-            {{on "click" (fn this.deleteAuthor @model)}}
-          >
-            delete
-          </button>
+          {{#if (can "delete author" @model)}}
+            <button
+              class="btn-recessed"
+              type="button"
+              data-test-delete-author-button
+              {{on "click" (fn this.deleteAuthor @model)}}
+            >
+              delete
+            </button>
+          {{/if}}
         </div>
       </div>
       <div class="details">
