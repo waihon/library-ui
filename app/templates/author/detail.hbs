@@ -53,14 +53,16 @@
       </div>
 
       <div class="actions">
-        <LinkTo
-          @route="author.detail.new-book"
-          @model={{@model.id}}
-          class="btn-secondary btn-add"
-          data-test-add-author-book-button
-        >
-          Add a book
-        </LinkTo>
+        {{#if (can "create book")}}
+          <LinkTo
+            @route="author.detail.new-book"
+            @model={{@model.id}}
+            class="btn-secondary btn-add"
+            data-test-add-author-book-button
+          >
+            Add a book
+          </LinkTo>
+        {{/if}}
       </div>
 
       <ul class="book-list">
