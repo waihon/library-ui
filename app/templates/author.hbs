@@ -11,9 +11,11 @@
     />
   </div>
 
-  <LinkTo @route="author.create" class="btn-new" data-test-new-author-button>
-    <div class="sr-only">Add New Author</div>
-  </LinkTo>
+  {{#if (can "create author")}}
+    <LinkTo @route="author.create" class="btn-new" data-test-new-author-button>
+      <div class="sr-only">Add New Author</div>
+    </LinkTo>
+  {{/if}}
 </div>
 
 <div class="panel-content">
