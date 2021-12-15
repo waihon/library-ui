@@ -5,6 +5,7 @@ import { computed } from '@ember/object';
 
 export default class AuthorAbility extends Ability {
   @service('current-user') currentUser;
+  @service session;
 
   // Dependencies are required to be declared statically in computed properties.
   // Properties accessed within the computed property function that are not
@@ -21,5 +22,10 @@ export default class AuthorAbility extends Ability {
   @computed('canEdit', 'model.books.length')
   get canDelete() {
     return this.canEdit && this.model.books.length === 0;
+  }
+
+  @computed('session.isAuthenticated')
+  get canCreate() {
+    return this.session.isAuthenticated;
   }
 }
