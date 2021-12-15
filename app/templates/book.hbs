@@ -12,9 +12,11 @@
     />
   </div>
 
-  <LinkTo @route="book.create" class="btn-new" data-test-new-book-button>
-    <div class="sr-only">Add New Book</div>
-  </LinkTo>
+  {{#if (can "create book")}}
+    <LinkTo @route="book.create" class="btn-new" data-test-new-book-button>
+      <div class="sr-only">Add New Book</div>
+    </LinkTo>
+  {{/if}}
 </div>
 
 
