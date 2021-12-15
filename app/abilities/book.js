@@ -1,7 +1,8 @@
+/* eslint-disable ember/no-computed-properties-in-native-classes */
 import { Ability } from 'ember-can';
 import { inject as service } from '@ember/service';
-// eslint-disable-next-line ember/no-computed-properties-in-native-classes
 import { computed } from '@ember/object';
+import { alias } from '@ember/object/computed';
 
 export default class BookAbility extends Ability {
   @service('current-user') currentUser;
@@ -19,13 +20,7 @@ export default class BookAbility extends Ability {
     }
   }
 
-  @computed('canEdit')
-  get canDelete() {
-    return this.canEdit;
-  }
+  @alias('canEdit') canDelete;
 
-  @computed('session.isAuthenticated')
-  get canCreate() {
-    return this.session.isAuthenticated;
-  }
+  @alias('session.isAuthenticated') canCreate;
 }
