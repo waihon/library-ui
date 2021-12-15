@@ -54,9 +54,9 @@ module.exports = function (environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
-    ENV.apiHost = 'https://mighty-refuge-77649.herokuapp.com';
+    ENV.apiHost = 'https://elibapi.herokuapp.com';
     ENV['ember-simple-auth-token'] = {
-      serverTokenEndpoint: 'https://mighty-refuge-77649.herokuapp.com/session',
+      serverTokenEndpoint: 'https://elibapi.herokuapp.com/session',
       // The backend doesn't support refresh of access tokens
       refreshAccessTokens: false,
     };
