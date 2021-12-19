@@ -17,7 +17,7 @@
     {{/if}}
   </ul>
 
-  {{#if this.session.isAuthenticated}}
+  {{#if this.currentUser.user}}
     <div class="current-user">
       Hello <strong>{{this.currentUser.user.username}}</strong>
     </div>
