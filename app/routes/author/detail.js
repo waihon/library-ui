@@ -7,4 +7,10 @@ export default class AuthorDetailRoute extends Route {
       include: 'books',
     });
   }
+
+  // This is meant for server side to wait for the loading of books before
+  // rendering the page.
+  afterModel(model) {
+    return model.books;
+  }
 }
