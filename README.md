@@ -212,3 +212,12 @@ Specify what it takes to deploy your app.
 ### 52. User-Level Authorization Controls with Ember Can Part 1
 
 * `ember g ability review`
+
+### 55. Server-Side Rendering with Ember Fastboot
+
+* `npm install --save-dev ember-source@~3.28.6`
+* `npm install --save-dev ember-data@~3.28.6`
+* `ember install ember-cli-fastboot`
+* `npm install fastboot-app-server`
+* `ember build -e production`
+* `PORT=8080 node serve.js`
