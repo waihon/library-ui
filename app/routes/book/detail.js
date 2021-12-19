@@ -6,4 +6,8 @@ export default class BookDetailRoute extends Route {
       include: 'author,reviews',
     });
   }
+
+  afterModel(model) {
+    return Promise.all([model.author, model.reviews]);
+  }
 }
