@@ -72,9 +72,7 @@ module.exports = function (environment) {
       refreshAccessTokens: false,
     };
     ENV.DS.host = 'https://elibapi.herokuapp.com';
-    // The localhost is needed so that we could test run with production config
-    // from development environment via `ember s -e production` for example.
-    ENV.fastboot.hostWhitelist = [ENV.DS.host, 'localhost:4200'];
+    ENV.fastboot.hostWhitelist = [ENV.DS.host, 'elibui.herokuapp.com'];
   }
 
   ENV['ember-simple-auth-token'].serverTokenEndpoint = `${ENV.DS.host}/session`;
