@@ -2,6 +2,9 @@
 
 module.exports = function (environment) {
   let ENV = {
+    DS: {
+      host: 'http://localhost:3000',
+    },
     modulePrefix: 'library-ui',
     environment,
     rootURL: '/',
@@ -24,6 +27,17 @@ module.exports = function (environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
+
+    'ember-simple-auth-token': {
+      identificationField: 'email',
+      passwordField: 'password',
+      headers: {
+        'Content-Type': 'application/vnd.api+json',
+        Accept: 'application/vnd.api+json',
+      },
+      // The backend doesn't support refresh of access tokens
+      refreshAccessTokens: false,
+    },
   };
 
   if (environment === 'development') {
@@ -32,11 +46,6 @@ module.exports = function (environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV['ember-simple-auth-token'] = {
-      serverTokenEndpoint: 'http://localhost:3000/session',
-      // The backend doesn't support refresh of access tokens
-      refreshAccessTokens: false,
-    };
   }
 
   if (environment === 'test') {
@@ -57,13 +66,18 @@ module.exports = function (environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
-    ENV.apiHost = 'https://elibapi.herokuapp.com';
     ENV['ember-simple-auth-token'] = {
       serverTokenEndpoint: 'https://elibapi.herokuapp.com/session',
       // The backend doesn't support refresh of access tokens
       refreshAccessTokens: false,
     };
+    ENV.DS.host = 'https://elibapi.herokuapp.com';
+    // The localhost is needed so that we could test run with production config
+    // from development environment via `ember s -e production` for example.
+    ENV.fastboot.hostWhitelist = [ENV.DS.host, 'localhost:4200'];
   }
+
+  ENV['ember-simple-auth-token'].serverTokenEndpoint = `${ENV.DS.host}/session`;
 
   return ENV;
 };
