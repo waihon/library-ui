@@ -71,8 +71,9 @@ module.exports = function (environment) {
       // The backend doesn't support refresh of access tokens
       refreshAccessTokens: false,
     };
-    ENV.DS.host = 'https://elibapi.herokuapp.com';
-    ENV.fastboot.hostWhitelist = [ENV.DS.host, 'elibui.herokuapp.com'];
+    ENV.DS.host = process.env.API_HOST || 'https://elibapi.herokuapp.com';
+    const clientHost = process.env.CLIENT_HOST || 'elibui.herokuapp.com';
+    ENV.fastboot.hostWhitelist = [ENV.DS.host, clientHost];
   }
 
   ENV['ember-simple-auth-token'].serverTokenEndpoint = `${ENV.DS.host}/session`;
