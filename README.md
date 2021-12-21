@@ -221,3 +221,13 @@ Specify what it takes to deploy your app.
 * `npm install fastboot-app-server`
 * `ember build -e production`
 * `PORT=8080 node serve.js`
+
+### 56. Deploying Ember with Heroku
+
+* `ember s -e production` (to test production config)
+* ` heroku create elibui --buildpack https://codon-buildpacks.s3.amazonaws.com/buildpacks/heroku/emberjs.tgz`
+* `git push heroku main`
+* `heroku config:set API_HOST=https://elibapi.herokuapp.com`
+* `heroku config:set CLIENT_HOST=elibui.herokuapp.com`
+* `git commit --allow-empty -m "Force deployment after setting config"`
+* `git push heroku main`
