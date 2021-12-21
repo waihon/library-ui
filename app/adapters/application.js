@@ -15,7 +15,7 @@ export default class ApplicationAdapter extends JSONAPIAdapter {
   // For test environment:
   // * Since Ember CLI Mirage is enabled in environment.js, Mirage will always
   //   be used as a mock server.
-  host = ENV.DS.host ?? '';
+  host = ENV.apiHost ?? '';
 
   get headers() {
     let session = this.session;

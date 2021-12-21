@@ -2,9 +2,6 @@
 
 module.exports = function (environment) {
   let ENV = {
-    DS: {
-      host: 'http://localhost:3000',
-    },
     modulePrefix: 'library-ui',
     environment,
     rootURL: '/',
@@ -46,6 +43,7 @@ module.exports = function (environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.tokenServer = 'http://localhost:3000';
   }
 
   if (environment === 'test') {
@@ -71,12 +69,15 @@ module.exports = function (environment) {
       // The backend doesn't support refresh of access tokens
       refreshAccessTokens: false,
     };
-    ENV.DS.host = process.env.API_HOST || 'https://elibapi.herokuapp.com';
+    ENV.apiHost = process.env.API_HOST || 'https://elibapi.herokuapp.com';
     const clientHost = process.env.CLIENT_HOST || 'elibui.herokuapp.com';
-    ENV.fastboot.hostWhitelist = [ENV.DS.host, clientHost];
+    ENV.fastboot.hostWhitelist = [ENV.apiHost, clientHost];
+    ENV.tokenServer = ENV.apiHost;
   }
 
-  ENV['ember-simple-auth-token'].serverTokenEndpoint = `${ENV.DS.host}/session`;
+  ENV[
+    'ember-simple-auth-token'
+  ].serverTokenEndpoint = `${ENV.tokenServer}/session`;
 
   return ENV;
 };
